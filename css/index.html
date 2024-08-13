@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- 文字コード・画面表示の設定 -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap,base.css,slickの読み込み -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="c:\Users\dotac\geekationWorkspace\test\reset.css">
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script>
+      document.addEventListener( 'DOMContentLoaded', function () {
+        new Splide( '#image-carousel' ).mount();
+      } );
+    </script>
+    <script>
+          // .s_05 .accordion_one
+      $(function(){
+        //.accordion_oneの中の.accordion_headerがクリックされたら
+        $('.s_05 .accordion_one .accordion_header').click(function(){
+          //クリックされた.accordion_oneの中の.accordion_headerに隣接する.accordion_innerが開いたり閉じたりする。
+          $(this).next('.accordion_inner').slideToggle();
+          $(this).toggleClass("open");
+        });
+        //閉じるボタンがクリックされたら
+        $('a.close_btn').click(function () {
+          //クリックされたa.close_btnの親要素.accordion_innerを閉じる。
+          $(this).parents('.accordion_inner').slideUp();
+          //クリックされたa.close_btnの親要素.accordion_innerの前要素にクラスopenがなければ追加し、あれば削除する。
+          $(this).parents('.accordion_inner').prev().toggleClass("open");
+        });
+      });
+
+      // ページ内リンク
+      $(function(){
+        // 閉じるボタンをクリックした場合に処理
+        $('.s_05 a.close_btn').click(function() {
+          // 移動先を0px上にずらす
+          var adjust = 0;
+          // スクロールの速度
+          var speed = 500; // ミリ秒
+          // アンカーの値取得
+          var href= $(this).attr("href");
+          // 移動先を取得
+          var target = $(href == "#" || href == "" ? 'html' : href);
+          // 移動先を調整
+          var position = target.offset().top - adjust;
+          // スムーススクロール
+          $('body,html').animate({scrollTop:position},speed,'swing');
+          return false;
+        });
+      });
+    </script>
+    <script>
+      window.addEventListener('scroll', function() {
+      var fadeInElements = document.querySelectorAll('.fade-in-element');
+        fadeInElements.forEach(function(element) {
+        element.style.opacity = 1;
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- ヘッダー -->
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <!-- ブランド名 -->
+          <span class="navbar-brand mb-0 h6">Casteria</span>
+          <!-- ハンバーガーメニューのボタン -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- ナビゲーションメニュー -->
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" id="active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Food</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Drink</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">お問合せ</a>
+              </li>
+              <!-- 検索フォーム -->
+              <li class="nav-item">
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-custom" type="submit">Search</button>
+                </form>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!--スライダー-->
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="c:\Users\dotac\geekationWorkspace\coding_advanced\img\food.jpg" alt=""></div>
+          <div class="swiper-slide"><img src="c:\Users\dotac\geekationWorkspace\coding_advanced\img\food2.jpg" alt=""></div>
+          <div class="swiper-slide"><img src="c:\Users\dotac\geekationWorkspace\coding_advanced\img\interior.jpg" alt=""></div>
+          <div class="swiper-slide"><img src="c:\Users\dotac\geekationWorkspace\coding_advanced\img\restaurant.jpg" alt=""></div>
+        </div>
+        <!-- 必要に応じてページネーション -->
+        <div class="swiper-pagination"></div>
+        <!-- 必要に応じてナビボタン -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-scrollbar"></div>
+      </div>
+      <!--/slider-->
+      <!-- 内容 -->
+      <h1>新型コロナウイルスに対する取り組みの最新情報をご案内</h1>
+      <div class="accordion">
+        <details class="js-details">
+          <summary class="js-summary">
+            <span class="summary_inner">■衛生面に関して</span>
+          </summary>
+          <div class="content js-content">
+            <div class="content_inner">
+              <ur>
+                <li>・マスクを着用しての接客</li>
+                <li>・出勤前の検温の徹底</li>
+                <li>・レジカウンターやドリンク受け渡し口等への飛沫防止ガードの設置</li>
+                <li>・より頻度の高い手洗いの励行</li>
+                <li>・テーブルにお客様用の消毒用アルコールの設置</li>
+                <li>・従業員間の距離確保ため、休憩や研修時の客席利用</li>
+              </ur>
+            </div>
+          </div>
+        </details>
+        <details class="js-details">
+          <summary class="js-summary">
+            <span class="summary_inner">■お客様へのご協力のお願い</span>
+          </summary>
+          <div class="content js-content">
+            <div class="content_inner">
+              <ur>
+                <li>・店内では、飲食時以外のマスク着用をお願いいたします</li>
+                <li>・入店時の手指の消毒にご協力ください</li>
+                <li>・レジに並ぶ際、目安を示すフロアステッカーに沿った列間隔の確保にご協力ください</li>
+                <li>・多数でお越しの際は、お1人がまとめてご注文願います(混雑時に入場制限をする場合がございます)</li>
+                <li>・発熱や体調不良の際はご入店を控えください</li>
+              </ur>
+            </div>
+          </div>
+        </details>
+        <details class="js-details">
+          <summary class="js-summary">
+            <span class="summary_inner">■サービスに関して</span>
+          </summary>
+          <div class="content js-content">
+            <div class="content_inner">
+              <ur>
+                <li>・直接お渡しする商品の提供、金銭授受時にグローブの着用</li>
+                <li>・ドリンクやフードのサンプリング中止</li>
+                <li>・地域活動・イベントの中止</li>
+                <li>・混雑時間帯の客席の譲り合いへのご協力お願いの実施</li>
+                <li>・店内設置しているミルク、はちみつ、パウダー類の一時引き下げ</li>
+                <li>・混雑状況に応じたドライブスルーサービスの一時休止や店内客席利用の制限</li>
+              </ur>
+            </div>
+          </div>
+        </details>
+      </div>
+      
+      <!-- 画像 -->
+      <div class="flex">
+        <h2>Signature Food</h2>
+      </div>
+      <div class="flex">
+        <figure class="image"><img src="c:\Users\dotac\geekationWorkspace\coding_advanced\img\food.jpg"></figure>
+        <p class="text">サーモンは刺身やカルパッチョで食べるのが美味しいですが、リッチな気分になれるサーモンステーキがおすすめです。サーモンの美味しさを引き立てる2種のソースも絶品です！</p>
+      </div>
+      <div class="flex">
+        <h2>Our Coffee</h2>
+      </div>
+      <div class="flex">
+        <figure class="image"><img src="c:\Users\dotac\geekationWorkspace\coding_advanced\img\barista.jpg"></figure>
+        <p class="text">当店のコーヒー豆が厳選して世界中から買い付けています。そして、そのコーヒー豆のおいしさを最大限に引き出すために自社のロースタリーで焙煎しています。</p>
+      </div>
+      <div class="flex">
+        <h2>Our Food</h2>
+      </div>
+        <div class="flex">
+          <figure class="image"><img src="c:\Users\dotac\geekationWorkspace\coding_advanced\img\food3.jpg"></figure>
+          <p class="text">当店は何よりまずは衛生管理に気を付けています。「安全・安心」をお届けするために日々継続的な努力を惜しみません。</p>
+        </div>
+        <!--アドレス-->
+        <div class="flex">
+          <div class="address">
+            <h3><span>Address</span><br>
+              681 xxxx Drive, xxxxx xxxx #01-06 000000<br>
+              Opening Hours<br>
+              <span>Mondays-Friday:10am-9pm</span><br>
+              Saturdays,Sundays&Public Holidays:9am-9pm
+            </h3>
+            <div>
+              <figure class="address-img"><img src="c:\Users\dotac\geekationWorkspace\coding_advanced\img\barista.jpg"></figure>
+            </div>
+          </div>
+        </div>
+        <!--店舗一覧-->
+        <div class="flex">
+          <h4>店舗一覧</h4>
+        </div>
+        <div class="gazo">
+          <div class="flex">
+            <figure class="gazo-box">
+              <img src="c:\Users\dotac\geekationWorkspace\coding_advanced\img\restaurant2.jpg" alt="東京都渋谷区xxxxxx xxxxx">
+              <p><i class="fa fa-map-marker "></i> 東京都渋谷区xxxxxx xxxxx</p>
+            </figure>
+            <figure class="gazo-box">
+              <img src="c:\Users\dotac\geekationWorkspace\coding_advanced\img\restaurant3.jpg" alt="東京都渋谷区xxxxxx xxxxx">
+              <p><i class="fa fa-map-marker "></i> 千葉県松戸市xxxxxx xxxxx</p>
+            </figure>
+            <figure class="gazo-box">
+              <img src="c:\Users\dotac\geekationWorkspace\coding_advanced\img\restaurant4.jpg" alt="東京都渋谷区xxxxxx xxxxx">
+              <p><i class="fa fa-map-marker "></i> 神奈川県横浜市xxxxxx xxxxx</p>
+            </figure>
+            <figure class="gazo-box">
+              <img src="c:\Users\dotac\geekationWorkspace\coding_advanced\img\restaurant5.jpg" alt="東京都渋谷区xxxxxx xxxxx">
+              <p><i class="fa fa-map-marker "></i> 埼玉県川越市xxxxxx xxxxx</p>
+            </figure>
+          </div>
+        </div>
+        <!-- フッター -->
+        <footer class="footer mt-auto py-4">
+          <div class="fotter_inner">     
+            <ul class="nav justify-content-center pb-3 mb-3">
+              <li class="nav-item">
+                <a href="#" class="footer-li px-2">プライバシーポリシー</a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="footer-li px-2">お問合せ</a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="footer-li px-2">運営会社</a>
+              </li>
+            </ul>
+          </div>
+        </footer>
+    </div>
+    <!-- jQueryの読み込み -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        const swiper = new Swiper(".swiper", {
+          slidesPerView: 1,
+          spaceBetween:10,
+          centeredSlides:true,
+          autoplay: true,
+          autoplaySpeed: 3000,
+          speed: 400,
+          loop: true,
+          pagination: {
+            el: ".swiper-pagination",
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev"
+          },
+          scrollbar:{
+            el:'.swiper-scrollbar',
+            draggable: true,
+          },
+          breakpoints: {
+            768: {
+              slidesPerView: 2, 
+              spaceBetween: 0,
+              centeredSlides:false,
+            }
+          }
+        });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        setUpAccordion();
+      });
+
+      /**
+       * ブラウザの標準機能(Web Animations API)を使ってアコーディオンのアニメーションを制御します
+       */
+      const setUpAccordion = () => {
+        const details = document.querySelectorAll(".js-details");
+        const RUNNING_VALUE = "running"; // アニメーション実行中のときに付与する予定のカスタムデータ属性の値
+        const IS_OPENED_CLASS = "is-opened"; // アイコン操作用のクラス名
+
+        details.forEach((element) => {
+          const summary = element.querySelector(".js-summary");
+          const content = element.querySelector(".js-content");
+
+          summary.addEventListener("click", (event) => {
+            // デフォルトの挙動を無効化
+            event.preventDefault();
+
+            // 連打防止用。アニメーション中だったらクリックイベントを受け付けないでリターンする
+            if (element.dataset.animStatus === RUNNING_VALUE) {
+              return;
+            }
+
+            // detailsのopen属性を判定
+            if (element.open) {
+              // アコーディオンを閉じるときの処理
+              // アイコン操作用クラスを切り替える(クラスを取り除く)
+              element.classList.toggle(IS_OPENED_CLASS);
+
+              // アニメーションを実行
+              const closingAnim = content.animate(closingAnimKeyframes(content), animTiming);
+              // アニメーション実行中用の値を付与
+              element.dataset.animStatus = RUNNING_VALUE;
+
+              // アニメーションの完了後に
+              closingAnim.onfinish = () => {
+                // open属性を取り除く
+                element.removeAttribute("open");
+                // アニメーション実行中用の値を取り除く
+                element.dataset.animStatus = "";
+              };
+            } else {
+              // アコーディオンを開くときの処理
+              // open属性を付与
+              element.setAttribute("open", "true");
+
+              // アイコン操作用クラスを切り替える(クラスを付与)
+              element.classList.toggle(IS_OPENED_CLASS);
+
+              // アニメーションを実行
+              const openingAnim = content.animate(openingAnimKeyframes(content), animTiming);
+              // アニメーション実行中用の値を入れる
+              element.dataset.animStatus = RUNNING_VALUE;
+
+              // アニメーション完了後にアニメーション実行中用の値を取り除く
+              openingAnim.onfinish = () => {
+                element.dataset.animStatus = "";
+              };
+            }
+          });
+        });
+      }
+
+      /**
+       * アニメーションの時間とイージング
+       */
+      const animTiming = {
+        duration: 400,
+        easing: "ease-out"
+      };
+
+      /**
+       * アコーディオンを閉じるときのキーフレーム
+       */
+      const closingAnimKeyframes = (content) => [
+        {
+          height: content.offsetHeight + 'px', // height: "auto"だとうまく計算されないため要素の高さを指定する
+          opacity: 1,
+        }, {
+          height: 0,
+          opacity: 0,
+        }
+      ];
+
+      /**
+       * アコーディオンを開くときのキーフレーム
+       */
+      const openingAnimKeyframes = (content) => [
+        {
+          height: 0,
+          opacity: 0,
+        }, {
+          height: content.offsetHeight + 'px',
+          opacity: 1,
+        }
+      ];
+    </script>
+    <script>
+    $(function () {
+    // ウィンドウをスクロールしたら…
+      $(window).scroll(function () {
+        // ウィンドウの高さを取得
+        const wHeight = $(window).height();
+        // スクロールした量を取得
+        const wScroll = $(window).scrollTop();
+        // それぞれのblockクラスに対して…
+        $(".flex").each(function () {
+          // それぞれのblockクラスのウィンドウからの高さを取得
+          const bPosition = $(this).offset().top;
+          // スクロールした量が要素の高さを上回ったら
+          // その数値にウィンドウの高さを引き、最後に200pxを足す
+          if (wScroll > bPosition - wHeight + 200) {
+            $(this).addClass("fadeIn");
+          }
+        });
+      });
+    });
+    </script>
+  </body>
+</html>
