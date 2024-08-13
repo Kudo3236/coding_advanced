@@ -1,0 +1,582 @@
+@charset "UTF-8";
+/* reset */
+html,body, h1, h2, h3, h4, h5, h6, p, address,
+ul, ol, li, dl, dt, dd, img, form, table, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: none;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 100%;
+	text-align: left;
+	list-style-type: none;
+	border-collapse: collapse;
+}
+
+textarea { font-size: 100%; vertical-align:middle;}
+img { border-style: none; display: block; }
+hr { display: none; }
+em{font-style: normal}
+input{line-height:auto;vertical-align:middle;}
+strong.more{color:#c30}
+a{text-decoration: none;}
+
+
+body {
+	font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+	background-color:#FFEFD5;
+}
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html{
+	min-height:100%;
+}
+
+/*PCの設定*/
+@media screen and ( min-width: 481px ){
+	/*ヘッダー*/
+	.wrapper{
+		position: relative;
+		min-height: 100vh;
+		padding-bottom: 200px;
+	}
+
+	nav{
+		background-color:lightgray;
+		height: 50px;
+	}
+
+	.navbar-brand{
+		color:black;
+		font-size:25px;
+		font-weight:bold;
+	}
+
+	.navbar .nav-item a,
+	.navbar .nav-link a{
+		color:dimgray;
+	}
+
+	#active{
+		color:black;
+	}
+
+
+	h1{
+		margin-top:10px;
+		margin-left:25%;
+		margin-right:25%;
+		font-size:36px;
+	}
+
+	/*==================================================
+	スライダーのためのcss
+	===================================*/
+	.swiper--wrapper {
+		/* wrapperのサイズを調整 */
+		width: 100%;
+		height: 600px;
+	}
+	  
+	.swiper-slide {
+		/* スライドのサイズを調整、中身のテキスト配置調整、背景色 */
+		width: 100%;
+		height: 100%;
+		text-align: center;
+		line-height: 300px;
+	}
+
+	.swiper-slide img{
+		width:100%;
+		height:500px;
+	}
+
+	#currentSlide {
+		text-align: center;
+		margin-top: 20px;
+		font-size: 18px;
+	}
+
+	/*accordion*/
+	summary {
+		/* display: list-item;以外を指定してデフォルトの三角形アイコンを消します */
+		display: block;
+	}
+	
+	summary::-webkit-details-marker {
+		/* Safariで表示されるデフォルトの三角形アイコンを消します */
+		display: none;
+	}
+	
+	.summary_inner{
+		cursor: pointer;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		padding: 16px 24px;
+		margin:0 400px 10px 400px;
+		font-size:24px;
+		color:black;
+		background-color:#FFC7AF;
+	}
+	
+	.icon {
+		display: block;
+		position: relative;
+		width: 24px;
+		margin-left: 6px;
+		flex-shrink: 0;
+		transform-origin: center 43%;
+		transition: transform 0.4s;
+	}
+	
+	/*details[open] .icon {*/
+	/*  transform: rotate(180deg);*/
+	/*}*/
+	
+	/* is-openedクラスが付与されたときのスタイル */
+	details.is-opened .icon {
+		transform: rotate(180deg);
+	}
+	
+	/* --------アコーディオンの中身のスタイル-------- */
+	.content {
+		overflow: hidden;
+		background-color: #FFEFD5;
+	
+		/* details直下のタグにpaddingを設定すると挙動がおかしくなるので、ここには指定しない */
+	}
+	
+	.content_inner {
+		padding: 0 48px;
+		margin:0 0 0px 360px;
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	.content_inner li{
+		margin-bottom:20px;
+	}
+
+
+	/*スクロールして表示される画像等*/
+	h2{
+		font-size:24px;
+		font-weight:bold;
+		overflow:hidden;
+		transition:all 2s;
+	}
+
+	.fade-in-element {
+		animation:animateImageSlide 10s infinite ease;
+		opacity: 0;
+	}
+
+	.flex{
+		display:flex;
+		margin-left:21%;
+		margin-top:5%;
+		opacity:0;
+		transition:all 2s;
+	}
+	
+	.flex.image{
+		overflow:hidden;
+		position:absolute;
+	}
+
+	.flex img{
+		width:480px;
+		height:320px;
+		object-fit:cover;
+	}
+	.text{
+		font-size:16px;
+		margin:40px;
+		width:400px;
+		
+	}
+
+	/* フェードイン用のクラス */
+	.fadeIn {
+		opacity: 1;
+	}
+	.address{
+		display:flex;
+		width:66%;
+		height:400px;
+		background-color:black;
+	}
+
+	.address span{
+		display:inline-block;
+		margin-left:10px;
+		font-size:24px;
+		color:white;
+	}
+
+	.address h3{
+		display:inline-block;
+		padding:5%;
+		line-height:40px;
+		margin:10px 0 10px 10px;
+		font-size:12px;
+		color:white;
+	}
+
+	.address.address-img{
+		overflow:hidden;
+		position:absolute;
+	}
+
+	.address img{
+		margin-top:8%;
+		width:480px;
+		height:320px;
+	}
+
+	h4{
+		text-align:center;
+		font-size:24px;
+		margin:3% 0 0 32%;
+	}
+
+	.gazo{
+		margin-left:-3%;
+	}
+
+	.gazo-box{
+		width:250px;
+		margin-left:2%;
+	}
+
+	figure.gazo-box img{
+		float:left;
+		width: 250px;
+		height:250px;
+		border-radius:50%;
+		background-image:".\img\restaurant2.jpg";
+		background-position:center;
+	}
+
+	.gazo-box p{
+		margin:3% 7% 0 0;
+	}
+
+	i{
+		width:10px;
+		height:10px;
+		vertical-align:middle;
+		margin:0 1px 14px 0;
+	}
+	.footer{
+		position:absolute;
+		background-color:darkgray;
+		height:90px;
+		width:100%;
+		bottom:0;
+	}
+
+	.footer-li{
+		color:black;
+		text-align:center;
+	}
+
+}
+
+@media screen and (max-width:768px) {
+	/*ヘッダー*/
+	.wrapper{
+		position: relative;
+		max-width:100%;
+		min-height: 100vh;
+		padding-bottom: 100px;
+	}
+
+	nav{
+		background-color:lightgray;
+		width:100%;
+		height: 70px;
+	}
+
+	.navbar{
+		padding-left:0;
+		padding-right:0;
+	}
+
+	.container-fluid {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	
+	.navbar-brand{
+		color:black;
+		margin-left:1%;
+		font-size:24px;
+		font-weight:bold;
+	}
+
+	.navbar-toggler-icon{
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='dimgray' d='M1.5 12.5h13v-1h-13v1zm0-5h13v-1h-13v1zm0-5h13v-1h-13v1z'/%3E%3C/svg%3E");
+	}
+
+	/* ハンバーガーメニューの背景色と前面表示設定 */
+	.navbar-collapse {
+		background-color: lightgray;
+		z-index: 1050;             /* メニューが他のコンテンツより前面に表示されるように設定 */
+		margin: 0;
+        padding: 0;
+		width:100%;
+	}
+
+	.navbar-nav {
+		width: 100%;
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.nav-item {
+		width: 100%;
+		margin-left:1%;
+		margin-right:1%;
+	}
+
+	.form-inline {
+		width: 100%;
+	}
+
+	.nav-link{
+		color:dimgray;
+	}
+	#active{
+		color:black;
+	}
+
+	.btn-custom {
+		background-color:ghostwhite; 
+		color:black;              /* ボタンのテキスト色を白に設定 */
+		border:none;              /* ボーダーを非表示に設定 */
+	}
+
+
+	/*==================================================
+	スライダーのためのcss
+	===================================*/
+	.swiper{
+		max-width:100%;
+		margin:0 auto !important;
+	}
+
+	.swiper-wrapper {
+		/* wrapperのサイズを調整 */
+		width: 100%;
+		height: 600px;
+	}
+	  
+	.swiper-slide {
+		/* スライドのサイズを調整、中身のテキスト配置調整、背景色 */
+		width: 100%;
+		height: 100%;
+		display:flex;
+		text-align: center;
+		align-items:center;
+		justify-content:center;
+		line-height: 300px;
+	}
+
+	.swiper-slide img{
+		width:300px;
+		height:300px;
+	}
+
+	#currentSlide {
+		text-align: center;
+		margin-top: 20px;
+		font-size: 18px;
+	}
+		
+	h1{
+		margin-top:10px;
+		margin:5% 10% 5% 15%;
+		font-size:32px;
+	}	
+
+	/*accordion*/
+	summary {
+		/* display: list-item;以外を指定してデフォルトの三角形アイコンを消します */
+		display: block;
+	}
+
+	summary::-webkit-details-marker {
+		/* Safariで表示されるデフォルトの三角形アイコンを消します */
+		display: none;
+	}
+
+	
+	.summary_inner{
+		cursor: pointer;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		padding: 16px 18px;
+		margin:0 10% 10px 15%;
+		font-size:18px;
+		color:black;
+		background-color:#FFC7AF;
+	}
+	
+	.icon {
+		display: block;
+		position: relative;
+		width: 24px;
+		margin-left: 6px;
+		flex-shrink: 0;
+		transform-origin: center 43%;
+		transition: transform 0.4s;
+	}
+	
+	/*details[open] .icon {*/
+	/*  transform: rotate(180deg);*/
+	/*}*/
+	
+	/* is-openedクラスが付与されたときのスタイル */
+	details.is-opened .icon {
+		transform: rotate(180deg);
+	}
+	
+	/* --------アコーディオンの中身のスタイル-------- */
+	.content {
+		overflow: hidden;
+		background-color: #FFEFD5;
+	
+		/* details直下のタグにpaddingを設定すると挙動がおかしくなるので、ここには指定しない */
+	}
+	
+	.content_inner {
+		padding: 0 48px;
+		margin:0 0 0px 5%;
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	.content_inner li{
+		margin-bottom:20px;
+	}
+
+	h2{
+		font-size:24px;
+		margin:10px 0 10px 15%;	
+		font-weight:bold;
+	}
+	/*スクロールして表示される画像等*/
+	.fade-in-element {
+		animation:animateImageSlide 10s infinite ease;
+		opacity: 0;
+	}
+
+	.flex{
+		opacity:0;
+		transition:all 2s;
+		justify-content:center;
+	}
+	
+	.flex.image{
+		overflow:hidden;
+		position:absolute;
+	}
+
+	.flex img{
+		width:280px;
+		height:210px;
+		object-fit:cover;
+		margin-left:15%;
+	}
+	.text{
+		font-size:14px;
+		padding-right:10%;
+		margin:2% 15% 0 15%;
+		width:80%;
+		
+	}
+
+	/* フェードイン用のクラス */
+	.fadeIn {
+		opacity: 1;
+	}
+
+	.address{
+		display:flex;
+		margin:5% 15% 10% 20%;
+		width:60%;
+		height:550px;
+		background-color:black;
+		flex-direction:column;
+		align-items:flex-start;
+	}
+
+	.address span{
+		display:inline-block;
+		margin-left:0;
+		font-size:24px;
+		color:white;
+	}
+
+	.address h3{
+		display:inline-block;
+		padding:20px;
+		line-height:40px;
+		margin:10px 0 1% 0;
+		font-size:12px;
+		color:white;
+	}
+
+	.address.address-img{
+		overflow:hidden;
+		position:absolute;
+	}
+
+	.address img{
+		display:inline-block;
+		margin:0 15% 0 10%;
+		width:80%;
+		height:45%;
+	}
+
+	h4{
+		display:none;
+	}
+
+	i{
+		display:none;
+	}
+
+	.gazo{
+		display:none;
+	}
+
+	.footer{
+		background-color:darkgray;
+		width:100%;
+		height:100px;
+		position:absolute;
+		margin:0;
+	}
+
+	.footer-li{
+		color:black;
+		text-align:center;
+	}
+	
+}
+
